@@ -1,1 +1,3 @@
 .venv/
+generated/
+generated_resized_srcs/
