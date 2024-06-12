@@ -1,0 +1,18 @@
+{
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell",
+            "args": [
+                "-ExecutionPolicy",
+                "Bypass"
+            ]
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "pylint.args":
+      [
+        "--disable=C0116", // missing-function-docstring
+        "--disable=C0301"  // line too long
+      ] 
+}
