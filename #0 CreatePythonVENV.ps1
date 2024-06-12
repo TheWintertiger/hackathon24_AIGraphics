@@ -62,11 +62,6 @@ Write-Output ""
 Write-Output "(VENV) Install requirements.txt"
 & $selectedPythonExe -m pip install -r requirements.txt -v
 
-Write-Output ""
-Write-Output "(VENV) Install requirements-debug.txt"
-& $selectedPythonExe -m pip install -r requirements-debug.txt -v
-
-& $selectedPythonExe -m pip install -r requirements-build.txt -v
 
 # Deactivate virtual environment
 #Write-Output ""
