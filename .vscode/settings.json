@@ -14,5 +14,6 @@
       [
         "--disable=C0116", // missing-function-docstring
         "--disable=C0301"  // line too long
-      ] 
+    ],
+    "svn.ignoreMissingSvnWarning": true
 }
