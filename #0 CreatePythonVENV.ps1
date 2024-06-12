@@ -10,11 +10,7 @@ Write-Output "Detecting Python versions in PATH..."
 
 # Function to find all Python executables in PATH
 function FindAllPython {
-    $pythonVersions = Get-Command python | ForEach-Object { $_.FileVersionInfo.ProductVersion }
-    $pythonExes = @()
-    foreach ($version in $pythonVersions) {
-        $pythonExes += "python$version"
-    }
+    $pythonExes = Get-Command python | Select-Object -ExpandProperty Source
     return $pythonExes
 }
 
@@ -29,7 +25,8 @@ foreach ($pythonExe in $allPythonExes) {
 $highestVersion = [version]"0.0"
 $selectedPythonExe = $null
 foreach ($pythonExe in $allPythonExes) {
-    $version = $pythonExe.Substring(6)  # Extract version from executable name
+    $versionOutput = & $pythonExe --version 2>&1
+    $version = $versionOutput -replace '^Python (\d+\.\d+\.\d+).*', '$1'
     $parsedVersion = [version]::new($version)
     if ($parsedVersion -ge [version]"3.11" -and $parsedVersion -gt $highestVersion) {
         $highestVersion = $parsedVersion
